@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Shahria Sarker Shuvo — Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0e14;
+    --panel:#11151d;
+    --line:#1e2430;
+    --text:#e7e9ee;
+    --dim:#8891a0;
+    --amber:#e8b54b;
+    --teal:#4fd1c5;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+  ::selection{ background:var(--amber); color:#0b0e14; }
+  a{ color:var(--teal); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin-bottom:1.1rem;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--teal);
+    display:inline-block;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; }
+
+  /* ---------- Layout shell ---------- */
+  .shell{ display:flex; max-width:1180px; margin:0 auto; }
+  nav.rail{
+    position:sticky; top:0; align-self:flex-start;
+    width:230px; height:100vh;
+    padding:2.4rem 1.5rem;
+    display:flex; flex-direction:column; justify-content:space-between;
+    border-right:1px solid var(--line);
+  }
+  nav.rail .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    line-height:1.3;
+    color:var(--text);
+  }
+  nav.rail .brand span{ display:block; color:var(--dim); font-family:'IBM Plex Mono',monospace; font-size:0.7rem; margin-top:0.4rem; letter-spacing:.05em;}
+  nav.rail ul{ list-style:none; margin-top:2.5rem; }
+  nav.rail li{ margin-bottom:0.9rem; }
+  nav.rail a{
+    color:var(--dim); font-size:0.86rem;
+    font-family:'IBM Plex Mono', monospace;
+    transition:color .15s ease;
+  }
+  nav.rail a:hover, nav.rail a.active{ color:var(--amber); text-decoration:none; }
+  nav.rail .foot{ font-size:0.72rem; color:var(--dim); font-family:'IBM Plex Mono',monospace; }
+
+  main{ flex:1; min-width:0; }
+  section{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:5.5rem 2.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:4.5rem; }
+  .hero h1{ font-size:clamp(2.2rem, 4.5vw, 3.1rem); letter-spacing:-0.01em; }
+  .hero .role{ color:var(--dim); font-size:1.05rem; margin-top:0.7rem; max-width:46ch; }
+  .hero .loc{ margin-top:1.1rem; color:var(--dim); font-family:'IBM Plex Mono',monospace; font-size:0.82rem; }
+
+  .contact-row{ display:flex; flex-wrap:wrap; gap:1.1rem; margin-top:1.8rem; font-family:'IBM Plex Mono',monospace; font-size:0.82rem; }
+  .contact-row a{ color:var(--text); border-bottom:1px solid var(--line); padding-bottom:2px; }
+  .contact-row a:hover{ color:var(--amber); border-color:var(--amber); text-decoration:none; }
+
+  .cta-row{ display:flex; gap:0.9rem; margin-top:2.2rem; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    padding:0.7rem 1.1rem;
+    border-radius:2px;
+    border:1px solid var(--line);
+    color:var(--text);
+    transition:all .15s ease;
+  }
+  .btn.primary{ background:var(--amber); color:#0b0e14; border-color:var(--amber); font-weight:500;}
+  .btn.primary:hover{ background:#f2c568; text-decoration:none; }
+  .btn:not(.primary):hover{ border-color:var(--teal); color:var(--teal); text-decoration:none; }
+
+  /* signature forecast graphic */
+  .signal{ margin-top:3rem; }
+  .signal svg{ width:100%; height:auto; display:block; }
+  .signal .caption{ display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--dim); margin-top:0.6rem; letter-spacing:.04em;}
+  .path-observed{ stroke:var(--teal); stroke-width:2; fill:none; }
+  .path-forecast{
+    stroke:var(--amber); stroke-width:2; fill:none;
+    stroke-dasharray:5 5;
+  }
+  .now-dot{ fill:var(--amber); }
+  .now-dot circle:first-child{ animation:pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse{
+    0%,100%{ opacity:0.35; r:7; }
+    50%{ opacity:0; r:13; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .now-dot circle:first-child{ animation:none; }
+  }
+
+  /* ---------- About ---------- */
+  .about p{ color:var(--dim); max-width:62ch; }
+  .about p + p{ margin-top:1rem; }
+  .about strong{ color:var(--text); font-weight:500; }
+
+  .tags{ display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.6rem; }
+  .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.75rem;
+    border:1px solid var(--line); color:var(--dim);
+    padding:0.4rem 0.7rem; border-radius:2px;
+  }
+
+  /* ---------- Publications ---------- */
+  .pub{ padding:1.6rem 0; border-top:1px solid var(--line); }
+  .pub:first-of-type{ border-top:none; padding-top:0;}
+  .pub .venue{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--amber); letter-spacing:.04em;}
+  .pub h3{ font-size:1.2rem; margin-top:0.5rem; font-weight:500; }
+  .pub .meta{ color:var(--dim); font-size:0.85rem; margin-top:0.3rem; }
+  .pub p.desc{ color:var(--dim); margin-top:0.7rem; max-width:62ch; }
+  .pub .highlight{ color:var(--teal); }
+  .pub .links{ margin-top:0.7rem; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; }
+
+  /* ---------- Timeline (research experience) ---------- */
+  .tl-item{ display:grid; grid-template-columns:120px 1fr; gap:1.5rem; padding:1.6rem 0; border-top:1px solid var(--line); }
+  .tl-item:first-of-type{ border-top:none; padding-top:0; }
+  .tl-date{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--dim); padding-top:0.15rem;}
+  .tl-body h3{ font-size:1.1rem; font-weight:500; }
+  .tl-body .org{ color:var(--teal); font-size:0.88rem; margin-top:0.2rem; }
+  .tl-body ul{ margin-top:0.8rem; padding-left:1.1rem; color:var(--dim); font-size:0.94rem; }
+  .tl-body li{ margin-bottom:0.4rem; }
+  .tl-body li::marker{ color:var(--amber); }
+
+  @media (max-width:640px){
+    .tl-item{ grid-template-columns:1fr; gap:0.4rem; }
+  }
+
+  /* ---------- Projects ---------- */
+  .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:0.5rem; }
+  .proj{ border:1px solid var(--line); padding:1.5rem; border-radius:3px; background:var(--panel); }
+  .proj h3{ font-size:1.02rem; font-weight:500; }
+  .proj p{ color:var(--dim); font-size:0.9rem; margin-top:0.6rem; }
+  .proj .links{ margin-top:0.9rem; font-family:'IBM Plex Mono',monospace; font-size:0.76rem; }
+  @media (max-width:640px){ .proj-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Education ---------- */
+  .edu-item{ display:flex; justify-content:space-between; align-items:baseline; padding:1rem 0; border-top:1px solid var(--line); gap:1rem; flex-wrap:wrap;}
+  .edu-item:first-of-type{ border-top:none; }
+  .edu-item .left h3{ font-size:1rem; font-weight:500; }
+  .edu-item .left .sub{ color:var(--dim); font-size:0.85rem; margin-top:0.2rem; }
+  .edu-item .right{ text-align:right; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--teal); white-space:nowrap; }
+  .edu-item .right .yr{ color:var(--dim); display:block; margin-top:0.2rem; }
+
+  /* ---------- Skills ---------- */
+  .skill-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.8rem; margin-top:0.5rem; }
+  .skill-cat .k{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--amber); letter-spacing:.06em; text-transform:uppercase; }
+  .skill-cat p{ color:var(--dim); margin-top:0.5rem; font-size:0.92rem; }
+  @media (max-width:640px){ .skill-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Achievements ---------- */
+  .ach-list{ margin-top:0.5rem; }
+  .ach-row{ display:flex; justify-content:space-between; gap:1rem; padding:0.75rem 0; border-top:1px solid var(--line); font-size:0.92rem; }
+  .ach-row:first-of-type{ border-top:none; }
+  .ach-row .name{ color:var(--text); }
+  .ach-row .detail{ color:var(--dim); font-family:'IBM Plex Mono',monospace; font-size:0.8rem; text-align:right; white-space:nowrap; }
+
+  /* ---------- References ---------- */
+  .ref-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin-top:0.5rem; }
+  .ref h3{ font-size:0.98rem; font-weight:500; }
+  .ref .role{ color:var(--dim); font-size:0.85rem; margin-top:0.25rem; }
+  .ref a{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; display:inline-block; margin-top:0.5rem; }
+  @media (max-width:640px){ .ref-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:3.5rem 2.5rem 4rem; max-width:var(--maxw); margin:0 auto; }
+  footer h2{ font-size:1.8rem; }
+  footer p{ color:var(--dim); margin-top:0.8rem; max-width:50ch; }
+  footer .contact-row{ margin-top:1.6rem; }
+  footer .end{ margin-top:3rem; color:var(--dim); font-size:0.75rem; font-family:'IBM Plex Mono',monospace; }
+
+  /* ---------- Mobile nav ---------- */
+  @media (max-width:880px){
+    .shell{ flex-direction:column; }
+    nav.rail{
+      position:static; width:100%; height:auto; flex-direction:row;
+      align-items:center; padding:1.2rem 1.5rem; border-right:none; border-bottom:1px solid var(--line);
+      overflow-x:auto;
+    }
+    nav.rail ul{ display:flex; gap:1.2rem; margin-top:0; white-space:nowrap; }
+    nav.rail .foot{ display:none; }
+    section{ padding:3.4rem 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="rail">
+    <div>
+      <div class="brand">Shahria Sarker Shuvo<span>TIME SERIES FORECASTING, FINTECH &amp; STATE-SPACE RESEARCH</span></div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot">Dhaka, Bangladesh<br>Updated Jul 2026</div>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="eyebrow">Researcher · Time Series Forecasting</div>
+      <h1>Md. Shahria Sarker Shuvo</h1>
+      <p class="role">I am Md. Shahria Sarker Shuvo, an undergraduate researcher in Computer Science at North South University, Bangladesh. My research focuses on efficient deep learning for multivariate time series forecasting, with particular interests in State Space Models (Mamba), representation learning, and scalable sequence modeling. I am the first author of a paper published in MDPI FinTech and second author of CARNet, accepted at ECML PKDD 2026. I am passionate about developing efficient, scalable AI models and am actively seeking research collaborations and fully funded Master's or PhD opportunities.</p>
+      <div class="loc">DHAKA, BANGLADESH · B.SC. CSE, NORTH SOUTH UNIVERSITY</div>
+
+      <div class="contact-row">
+        <a href="mailto:shamimraja57@gmail.com">shamimraja57@gmail.com</a>
+        <a href="tel:+8801641616940">+880 1641616940</a>
+        <a href="https://orcid.org/0009-0001-1369-4780" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.linkedin.com/in/shahria-sarker-shuvo-087017181/" target="_blank" rel="noopener">Linkedin</a>
+        <a href="https://scholar.google.com/citations?user=2_JLlvIAAAAJ&hl=en/" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/Mistouch" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#publications">View publications</a>
+        <a class="btn" href="mailto:shamimraja57@gmail.com">Get in touch</a>
+      </div>
+
+      <div class="signal" aria-hidden="true">
+        <svg viewBox="0 0 800 160" preserveAspectRatio="none">
+          <path class="path-observed" d="M0,110 L40,95 L80,120 L120,80 L160,100 L200,60 L240,85 L280,55 L320,75 L360,45 L400,60"></path>
+          <path class="path-forecast" d="M400,60 L440,50 L480,65 L520,40 L560,55 L600,35 L640,48 L680,28 L720,42 L760,20 L800,32"></path>
+          <g class="now-dot">
+            <circle cx="400" cy="60" r="7"></circle>
+            <circle cx="400" cy="60" r="3.5"></circle>
+          </g>
+        </svg>
+        <div class="caption">
+          <span>OBSERVED</span>
+          <span style="color:var(--amber)">NOW · FORECAST →</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="eyebrow">About</div>
+      <div class="about">
+        <p>I'm a Computer Science and Engineering graduate from North South University (CGPA 3.09/4.00, May 2026), currently working as an undergraduate researcher at the Apurba–NSU R&amp;D Lab. My work centers on <strong>multivariate time series forecasting</strong>: designing architectures that model cross-variate dependencies and long-range temporal patterns without the quadratic cost of attention.</p>
+        <p>My co-developed model, <strong>CARNet</strong>, was accepted at ECML PKDD 2026 and received reviewer feedback describing it as a possible best-paper candidate. I've also published first-author work on Mamba-augmented Transformers for financial forecasting, and I compete regularly in ICPC and other programming contests — a habit that keeps my implementation and algorithmic thinking sharp alongside the research.</p>
+        <p>I'm now looking toward Master's or PhD where I can push further on efficient sequence architectures and foundation models for time series.</p>
+      </div>
+      <div class="tags">
+        <span class="tag">Time Series Forecasting</span>
+        <span class="tag">State Space Models (Mamba)</span>
+        <span class="tag">Sequential Representation Learning</span>
+        <span class="tag">Efficient Deep Learning</span>
+        <span class="tag">Multivariate Sequence Modeling</span>
+        <span class="tag">Foundation Models</span>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="eyebrow">Publications</div>
+
+      <div class="pub">
+        <div class="venue">ECML PKDD 2026 · Research Track · Acceptance rate 24%</div>
+        <h3>CARNet: Cycle-Aware Core Aggregation Network for Multivariate Time Series Forecasting</h3>
+        <div class="meta">Shuvo, M. S. S. — Second Author</div>
+        <p class="desc">Co-developed a cycle-aware core aggregation framework with an efficient core redistribution mechanism for multivariate forecasting, evaluated on five benchmarks (ETT, Electricity, Traffic, Weather, PEMS). <span class="highlight">A reviewer described it as a possible best-paper candidate.</span></p>
+        <div class="links"><a href="#" target="_blank" rel="noopener">Paper (Not online yet)</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="venue">MDPI FinTech, 5(1), 15 · 2026 · Peer-reviewed, Scopus-indexed</div>
+        <h3>How Effective is Mamba-Augmented Transformer for Stock Market Forecasting?</h3>
+        <div class="meta">Shuvo, M. S. S. — First Author</div>
+        <p class="desc">Proposed CrossMamba, a causal Mamba-based architecture for efficient cross-sequence interaction in stock market forecasting, achieving competitive results against Transformer- and Mamba-based baselines on S&amp;P 500 and Yahoo Finance data.</p>
+        <div class="links"><a href="https://doi.org/10.3390/fintech5010015" target="_blank" rel="noopener">doi.org/10.3390/fintech5010015</a></div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="eyebrow">Research Experience</div>
+
+      <div class="tl-item">
+        <div class="tl-date">Mar 2025 — Present</div>
+        <div class="tl-body">
+          <h3>Undergraduate Researcher</h3>
+          <div class="org">Apurba–NSU R&amp;D Lab, Dept. of Electrical &amp; Computer Engineering, North South University</div>
+          <ul>
+            <li>Conducting research on deep learning methods for multivariate time series forecasting under faculty supervision.</li>
+            <li>Co-developed CARNet, an efficient cycle-aware architecture accepted at ECML PKDD 2026.</li>
+            <li>Designed non-attention mechanisms for efficient cross-variate dependency modeling.</li>
+            <li>Built training pipelines and ran large-scale experiments on ETT, Electricity, Traffic, Weather, and PEMS datasets.</li>
+            <li>Performed ablation studies validating architectural design choices.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="eyebrow">Research Projects</div>
+      <div class="proj-grid">
+        <div class="proj">
+          <h3>Vision Mamba-based Medical Image Segmentation (VM-UNet)</h3>
+          <p>A U-Net architecture integrating Vision Mamba (VMBlock) layers with residual connections and a combined Dice–Focal loss for nuclei segmentation, evaluated on MoNuSeg-2018. Uses selective state space mechanisms to model long-range spatial dependencies.</p>
+          <div class="links"><a href="https://github.com/Mistouch/nuclei-segmentation-deep-learning" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+        <div class="proj">
+          <h3>Multi-Teacher Knowledge Distillation Framework</h3>
+          <p>A binary search-based optimization strategy for adaptive teacher selection, with an efficient logit aggregation mechanism, improving student generalization on CIFAR-10, CIFAR-100 and Tiny imagenet.</p>
+          <div class="links"><a href="https://github.com/Mistouch/nuclei-segmentation-deep-learning" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="software">
+      <div class="eyebrow">Software Projects</div>
+      <div class="proj-grid">
+        <div class="proj">
+          <h3>StepCal — Android Fitness App</h3>
+          <p>Mobile app for Personal fitness activity including calorie count, step counting and activity tracking. Android Studio (Java + XML) frontend with a Java Spring Boot backend exposing RESTful APIs. <span class="mono" style="color:var(--dim)">2024</span></p>
+          <div class="links">
+            <a href="https://github.com/Mistouch/Cse299-Project-StepCal-Frontend" target="_blank" rel="noopener">Frontend</a> ·
+            <a href="https://github.com/Mistouch/Cse299-Project-StepCal-Backtend" target="_blank" rel="noopener">Backend</a>
+          </div>
+        </div>
+        <div class="proj">
+          <h3>Everlane BD — Corporate Website</h3>
+          <p>Built and maintained a corporate site on WordPress, including content management, UI customization, and responsive design. <span class="mono" style="color:var(--dim)">2024</span></p>
+        </div>
+        <div class="proj">
+          <h3>Road Runner 2D — Arcade Racing Game</h3>
+          <p>2D racing game in Java Swing with collision detection, scoring mechanics, and a real-time game loop, using object-oriented and event-driven design. <span class="mono" style="color:var(--dim)">2022</span></p>
+          <div class="links"><a href="https://github.com/Mistouch/Road-Runnner-2D" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+        <div class="proj">
+          <h3>Bank Management System (C)</h3>
+          <p>Password-authenticated bank management system with file-based persistence, supporting account creation, transactions, and record management. <span class="mono" style="color:var(--dim)">2022</span></p>
+          <div class="links"><a href="https://github.com/Mistouch/Bank-Mamagement-in-c" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="eyebrow">Education</div>
+      <div class="edu-item">
+        <div class="left">
+          <h3>B.Sc. in Computer Science and Engineering</h3>
+          <div class="sub">North South University, Dhaka, Bangladesh</div>
+        </div>
+        <div class="right">CGPA 3.09 / 4.00<span class="yr">Graduated May 2026</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="left">
+          <h3>Higher Secondary Certificate (Science)</h3>
+          <div class="sub">Kabi Nazrul Govt. College</div>
+        </div>
+        <div class="right">GPA 5.00 / 5.00<span class="yr">Aug 2020</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="left">
+          <h3>Secondary School Certificate (Science)</h3>
+          <div class="sub">Shohagpur SK Pilot Model High School</div>
+        </div>
+        <div class="right">GPA 5.00 / 5.00<span class="yr">May 2018</span></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="eyebrow">Technical Skills</div>
+      <div class="skill-grid">
+        <div class="skill-cat">
+          <div class="k">Programming</div>
+          <p>Python, C++, Java, C</p>
+        </div>
+        <div class="skill-cat">
+          <div class="k">Frameworks</div>
+          <p>PyTorch, TensorFlow, Scikit-learn</p>
+        </div>
+        <div class="skill-cat">
+          <div class="k">Research Areas</div>
+          <p>Time Series Forecasting, State Space Models (Mamba), Representation Learning, Deep Learning, Computer Vision</p>
+        </div>
+        <div class="skill-cat">
+          <div class="k">Tools</div>
+          <p>Linux, Git, CUDA, Jupyter, Kaggle</p>
+        </div>
+        <div class="skill-cat">
+          <div class="k">Software Development</div>
+          <p>Java Spring Boot, Android Studio, MySQL, WordPress</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="eyebrow">Competitive Programming &amp; Achievements</div>
+      <div class="ach-list">
+        <div class="ach-row"><span class="name">Intra NSU Junior Programming Contest 2023</span><span class="detail">Rank 10</span></div>
+        <div class="ach-row"><span class="name">ICPC Asia Regional Contest 2025</span><span class="detail">Rank 60</span></div>
+        <div class="ach-row"><span class="name">CUET Inter University Programming Contest 2025</span><span class="detail">Rank 112</span></div>
+        <div class="ach-row"><span class="name">Codeforces (Mistouch)</span><span class="detail">Max rating 1272 · 740+ solved</span></div>
+        <div class="ach-row"><span class="name">CodeChef (mistouch)</span><span class="detail">Max rating 1497 · 40+ solved</span></div>
+        <div class="ach-row"><span class="name">AtCoder (Mistouch)</span><span class="detail">Max rating 321 · 35+ solved</span></div>
+        <div class="ach-row"><span class="name">VJudge (Shuvo_254750)</span><span class="detail">510+ solved</span></div>
+        <div class="ach-row"><span class="name">Member, NSU Problem Solvers</span><span class="detail">Competitive programming</span></div>
+      </div>
+    </section>
+
+    <section id="refs">
+      <div class="eyebrow">References</div>
+      <div class="ref-grid">
+        <div class="ref">
+          <h3>Dr. Mohammad Rashedur Rahman</h3>
+          <div class="role">Professor, Dept. of CSE, North South University</div>
+          <a href="mailto:rashedur.rahman@northsouth.edu">rashedur.rahman@northsouth.edu</a>
+        </div>
+        <div class="ref">
+          <h3>Dr. Nabeel Mohammed</h3>
+          <div class="role">Associate Professor, Dept. of CSE, North South University</div>
+          <a href="mailto:nabeel.mohammed@northsouth.edu">nabeel.mohammed@northsouth.edu</a>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <h2>Let's talk research.</h2>
+      <p>Open to PhD / MS positions and research collaborations in time series forecasting, sequence modeling, and efficient deep learning architectures.</p>
+      <div class="contact-row">
+        <a href="mailto:shamimraja57@gmail.com">shamimraja57@gmail.com</a>
+        <a href="tel:+8801641616940">+880 1641616940</a>
+        <a href="https://orcid.org/0009-0001-1369-4780" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.linkedin.com/in/shahria-sarker-shuvo-087017181/" target="_blank" rel="noopener">Linkedin</a>
+        <a href="https://scholar.google.com/citations?user=2_JLlvIAAAAJ&hl=en/" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/Mistouch" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="end">© 2026 Md. Shahria Sarker Shuvo · Dhaka, Bangladesh</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Active nav highlight on scroll
+  const links = document.querySelectorAll('nav.rail a[href^="#"]');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const setActive = () => {
+    let current = sections[0];
+    for (const sec of sections) {
+      if (sec.getBoundingClientRect().top - 100 <= 0) current = sec;
+    }
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current.id));
+  };
+  document.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>
+
+</body>
+</html>
